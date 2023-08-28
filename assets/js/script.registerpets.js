@@ -6,41 +6,33 @@ class Pet {
         this.picture = pictureLink;
         this.birthdate = birthdate;
         this.yearAge = this.calculateAge();
-        this.ageMonth = this.calculateAgeMonth();
     }
 
     calculateAge() {
-        const birthDate = this.birthdate;
-        const personYear = new Date(birthDate).getFullYear();
-        const todayYear = new Date().getFullYear();
-        const personMonth = new Date(birthDate).getMonth();
-        const todayMonth = new Date(birthDate).getMonth() + 1;
+        let today = new Date();
+        const birthDate = new Date(this.birthdate);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let month = today.getMonth() - birthDate.getMonth();
 
-        const ageYear = todayYear - personYear;
-
-
-
-        if (personMonth > todayMonth) {
-            return ageYear - 1;
-        } else {
-            return ageYear;
+        if(month < 0 || (month == 0 && today.getDate() < birthDate.geDate())){
+            age--;
         }
+
+        if(month == 1){
+            month += ` mês`;
+        }else{
+            month += ` meses`
+        }
+
+        if(age == 1){
+            age= `${age} ano`
+        }else{
+            age = `${age} anos`
+        }
+        return `${age} e ${month}`; 
     }
 
-    calculateAgeMonth() {
-        const birthDate = this.birthdate;
-        const personMonth = new Date(birthDate).getMonth();
-        const todayMonth = new Date(birthDate).getMonth() + 1;
 
-
-        const ageMonth = todayMonth - personMonth;
-
-        if (personMonth > todayMonth) {
-            return ageMonth - 1;
-        } else {
-            return ageMonth;
-        }
-    }
 }
 
 class ListPet {
@@ -89,7 +81,7 @@ function showPet() {
             <p><strong>Nome do Pet: </strong> ${pet.petname}</p>
             <p><strong>Espécie: </strong> ${pet.species}</p>
             <p><strong>Data de Nascimento: </strong> ${dateinPTBR(pet.birthdate)}</p>
-            <p><strong>Idade: </strong> ${pet.yearAge} anos e ${pet.ageMonth} mês/meses</p>
+            <p><strong>Idade: </strong> ${pet.yearAge} anos e mês/meses</p>
             </div>
         
         `
@@ -105,13 +97,12 @@ function verifyInputs() {
     let pictureLink = document.getElementById("input-picture").value;
     let birthdate = document.getElementById("input-birthdate").value;
 
-
     if (tutor == "" || petname == "" || species == "" || pictureLink == "" || birthdate == "") {
         sendMsg("Preencha todos os campos", "error");
         return true;
     } else if (!isURLValida(pictureLink)) {
         sendMsg("Link inválido", "error")
-    }
+    } 
     else {
         sendMsg("Cadastrado com sucesso", "success");
         return false;
@@ -156,4 +147,9 @@ function dateinPTBR(date) {
     dateBR.reverse()
     return dateBR.join('/')
 }
+
+
+
+
+
 
