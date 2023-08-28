@@ -5,7 +5,8 @@ class Pet{
         this.species = species;
         this.picture = pictureLink;
         this.birthdate = birthdate;
-        this.age = this.calculateAge();
+        this.yearAge = this.calculateAge();
+        this.ageMonth = this.calculateAgeMonth();
     }
 
     calculateAge(){
@@ -17,10 +18,27 @@ class Pet{
 
         const ageYear= todayYear - personYear;
 
+       
+
         if(personMonth > todayMonth){
             return ageYear -1;
         }else{
             return ageYear;
+        }
+    }
+
+    calculateAgeMonth(){
+        const birthDate = this.birthdate;
+        const personMonth = new Date(birthDate).getMonth();
+        const todayMonth = new Date(birthDate).getMonth() +1;
+
+
+        const ageMonth = todayMonth - personMonth;
+
+        if(personMonth > todayMonth){
+            return ageMonth -1;
+        }else{
+            return ageMonth;
         }
     }
 }
@@ -70,8 +88,8 @@ function showPet(){
             <p><strong>Tutor: </strong> ${pet.tutor}</p>
             <p><strong>Nome do Pet: </strong> ${pet.petname}</p>
             <p><strong>Espécie: </strong> ${pet.species}</p>
-            <p><strong>Data de Nascimento: </strong> ${pet.birthdate}</p>
-            <p><strong>Idade: </strong> ${pet.age}</p>
+            <p><strong>Data de Nascimento: </strong> ${dateinPTBR(pet.birthdate)}</p>
+            <p><strong>Idade: </strong> ${pet.yearAge} anos e ${pet.calculateAgeMonth}</p>
             </div>
         
         `
@@ -128,4 +146,10 @@ function isURLValida(url) {
     } else {
         return false;
     }
+}
+
+function dateinPTBR(date){
+    let dateBR = date.split('-')
+        dateBR.reverse()
+        return dateBR.join('/')
 }
