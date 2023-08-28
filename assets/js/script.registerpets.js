@@ -104,11 +104,15 @@ function verifyInputs(){
     let pictureLink = document.getElementById("input-picture").value;
     let birthdate = document.getElementById("input-birthdate").value;
 
+    const formatedDate = Date(dateinPTBR)
+
     if(tutor == "" || petname == "" || species == "" || pictureLink == "" || birthdate == ""){
         sendMsg("Preencha todos os campos", "error");
         return true;
     }else if(isURLValida(pictureLink)){
         sendMsg("Link inválido", "error")
+    }else if(formatedDate < dateinPTBR){
+        sendMsg("Digite uma data válida")
     }else{
         sendMsg("Cadastrado com sucesso", "success");
         return false;
@@ -153,3 +157,4 @@ function dateinPTBR(date){
         dateBR.reverse()
         return dateBR.join('/')
 }
+
