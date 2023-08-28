@@ -57,6 +57,25 @@ function showPet(){
     });
 }
 
+function verifyInputs(){
+    let tutor = document.getElementById("input-tutor").value;
+    let petname= document.getElementById("input-petname").value;
+    let species = document.getElementById("input-species").value;
+    let pictureLink = document.getElementById("input-picture").value;
+    let birthdate = document.getElementById("input-birthdate").value;
+
+    if(tutor == "" || petname == "" || species == "" || pictureLink == "" || birthdate == ""){
+        sendMsg("Preencha todos os campos", "error");
+        return true;
+    }else if(isURLValida(pictureLink)){
+        sendMsg("Link inválido", "error")
+    }else{
+        sendMsg("Cadastrado com sucesso", "success");
+        return false;
+    }
+}
+
+
 function isURLValida(url) {
     if(url.match(/\.(jpeg|jpg|gif|png)$/) != null){
         return true;
