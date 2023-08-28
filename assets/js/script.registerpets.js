@@ -56,3 +56,11 @@ function showPet(){
         listArray.innerHTML += html;
     });
 }
+
+function isURLValida(url) {
+    if(url.match(/\.(jpeg|jpg|gif|png)$/) != null){
+        return true;
+    } else {
+        return false;
+    }
+}
