@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
     margin: 0;
     padding: 0;
     display: flex;
@@ -15,7 +15,7 @@ body {
 }
 
 header{
-    background-color: green;
+    background-color: #1d7044;
     width: 100%;
     color: white;
     text-align: center;
@@ -26,14 +26,100 @@ header{
 }
 
 .success{
-    color: green;
+    color: #1d7044;
 }
 
 .button-header{
-    background-color: green;
+    margin: 1%;
+    border-radius: 6px;
+    border: 1px none white;
+    height: 2.5rem;
+    width: 8%;
     color: white;
+    font-size: 19px;
+    background-color: #1d7044;
+    margin-top: 0;
+    padding: 0;
 }
 
 .hidden {
     display: none;
+}
+
+h2{
+    color: #1d7044;
+}
+
+h1{
+    margin-bottom: 0;
+}
+
+label{
+    color: #1d7044;
+}
+
+#container-principal {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: left;
+}
+
+#container-inputs {
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button{
+    background-color: #1d7044;
+    color: white;
+    width: 20%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.button-header{
+    cursor: pointer;
+}
+
+.petdetail {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    margin: 1rem;
+    display: inline-block;
+}
+
+.petdetail img {
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+}
+
+.petdetail-content {
+    text-align: center;
+}
+
+footer{
+    background-color: #1d7044;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 3rem;
 }

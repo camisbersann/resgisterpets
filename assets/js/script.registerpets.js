@@ -73,7 +73,10 @@ function createPet() {
     libraryPet.add(pet);
     console.log(libraryPet)
 
+    
+    registerPet()
     showPet();
+    listALotOfPets();
 
 }
 
