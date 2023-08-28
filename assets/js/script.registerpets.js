@@ -14,7 +14,11 @@ class ListPet{
     }
 
     add(pet){
-        this.pets.push(pet);
+        if(verifyInputs() == false){
+            this.pets.push(pet);
+            clearInputs();
+
+        }
     }
 }
 
@@ -73,6 +77,7 @@ function verifyInputs(){
         sendMsg("Cadastrado com sucesso", "success");
         return false;
     }
+
 }
 
 function sendMsg(msg, typeMsg){
@@ -87,6 +92,15 @@ function sendMsg(msg, typeMsg){
     setTimeout(function(){
         msgDiv.innerHTML= '';
     },3000);
+
+}
+
+function clearInputs(){
+    document.getElementById("input-tutor").value= "";
+    document.getElementById("input-petname").value= "";
+    document.getElementById("input-species").value= "";
+    document.getElementById("input-picture").value= "";
+    document.getElementById("input-birthdate").value= "";
 
 }
 
