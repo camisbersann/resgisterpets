@@ -2,12 +2,14 @@ let thereIsPet = false;
 
 class Pet {
     constructor(tutor, petname, species, pictureLink, birthdate) {
+        this.id = gerarId()
         this.tutor = tutor;
         this.petname = petname;
         this.species = species;
         this.picture = pictureLink;
         this.birthdate = birthdate;
         this.yearAge = this.calculateAge();
+        
     }
 
     calculateAge() {
@@ -54,8 +56,34 @@ class ListPet {
         return this.pets;
     }
 
+    delete(id){
+        this.pets = this.pets.filter(pet => (pet.id != id));
+    }
+
+     edit(id){
+         if(flagId == id){
+             let pet = this.pets.find((pet) => pet.id == id)
+
+             pet.tutor = document.getElementById("input-tutor").value;
+             pet.petname= document.getElementById("input-petname").value;
+             pet.species = document.getElementById("input-species").value;
+             pet.birthdate = document.getElementById("input-birthdate").value;
+             pet.pictureLink = document.getElementById("input-picture").value;
+             pet.id = flagId
+             
+             this.pets.forEach(pett =>{
+                if(pett.id == flagId){
+                    pett = pet;
+                    flagId = -1;
+                }
+            })
+         }
+     }
+
       
 }
+
+ var flagId= -1;
 
 const libraryPet = new ListPet();
 
@@ -70,14 +98,16 @@ function createPet() {
 
     // console.log(pet);
 
-    libraryPet.add(pet);
-    console.log(libraryPet)
+    if (flagId < 0) {
+        libraryPet.add(pet);
+        console.log(libraryPet)
+    } else {
+        editPet(flagId)
+    }
 
     
     registerPet()
     showPet();
-    listALotOfPets();
-
 }
 
 function showPet() {
@@ -96,6 +126,8 @@ function showPet() {
             <p><strong>Espécie: </strong> ${pet.species}</p>
             <p><strong>Data de Nascimento: </strong> ${dateinPTBR(pet.birthdate)}</p>
             <p><strong>Idade: </strong> ${pet.yearAge}</p>
+            <button class="button" onclick="remove(${pet.id})">🗑</button>
+            <button class="button" onclick="editPet(${pet.id})">🖊</button>
             </div>
         
         `
@@ -181,6 +213,26 @@ function listALotOfPets() {
   
 }
 
+function remove(id){
+    libraryPet.delete(id);
+    showPet();
+}
+
+function gerarId(){
+    return Math.floor(Math.random()*9999)
+}
+
+function editPet(id) {
+   libraryPet.edit(id);
+   flagId = id
+   let pet= libraryPet.pets.find((pet) => pet.id == id)
+
+    document.getElementById("input-tutor").value = pet.tutor;
+   document.getElementById("input-petname").value = pet.petname;
+   document.getElementById("input-species").value = pet.species;
+    document.getElementById("input-picture").value = pet.picture;
+    document.getElementById("input-birthdate").value = pet.birthdate;
+ }
 
 
 

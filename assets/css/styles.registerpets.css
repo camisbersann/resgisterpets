@@ -102,6 +102,7 @@ label{
     box-shadow: 0 2px 4px rgb(0, 0, 0);
     margin: 1rem;
     display: inline-block;
+    min-height: 29.7rem;
 }
 
 .petdetail img {
@@ -118,8 +119,12 @@ label{
 
 footer{
     background-color: #1d7044;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
     text-align: center;
-    height: 3rem;
 }
