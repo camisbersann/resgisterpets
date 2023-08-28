@@ -5,6 +5,23 @@ class Pet{
         this.species = species;
         this.picture = pictureLink;
         this.birthdate = birthdate;
+        this.age = this.calculateAge();
+    }
+
+    calculateAge(){
+        const birthDate = this.birthdate;
+        const personYear = new Date(birthDate).getFullYear();
+        const todayYear = new Date().getFullYear();
+        const personMonth = new Date(birthDate).getMonth();
+        const todayMonth = new Date(birthDate).getMonth() +1;
+
+        const ageYear= todayYear - personYear;
+
+        if(personMonth > todayMonth){
+            return ageYear -1;
+        }else{
+            return ageYear;
+        }
     }
 }
 
@@ -54,6 +71,7 @@ function showPet(){
             <p><strong>Nome do Pet: </strong> ${pet.petname}</p>
             <p><strong>Espécie: </strong> ${pet.species}</p>
             <p><strong>Data de Nascimento: </strong> ${pet.birthdate}</p>
+            <p><strong>Idade: </strong> ${pet.age}</p>
             </div>
         
         `
