@@ -1,3 +1,5 @@
+let thereIsPet = false;
+
 class Pet {
     constructor(tutor, petname, species, pictureLink, birthdate) {
         this.tutor = tutor;
@@ -14,7 +16,7 @@ class Pet {
         let age = today.getFullYear() - birthDate.getFullYear();
         let month = today.getMonth() - birthDate.getMonth();
 
-        if(month < 0 || (month == 0 && today.getDate() < birthDate.geDate())){
+        if(month < 0 || (month == 0 && today.getDate() < birthDate.getDate())){
             age--;
         }
 
@@ -44,8 +46,15 @@ class ListPet {
         if (verifyInputs() == false) {
             this.pets.push(pet);
             clearInputs();
+            thereIsPet = true;
         }
     }
+
+    getAll() {
+        return this.pets;
+    }
+
+      
 }
 
 const libraryPet = new ListPet();
@@ -65,9 +74,11 @@ function createPet() {
     console.log(libraryPet)
 
     showPet();
+
 }
 
 function showPet() {
+
     const listHTML = document.getElementById("container-list");
     listHTML.innerHTML = "";
 
@@ -81,7 +92,7 @@ function showPet() {
             <p><strong>Nome do Pet: </strong> ${pet.petname}</p>
             <p><strong>Espécie: </strong> ${pet.species}</p>
             <p><strong>Data de Nascimento: </strong> ${dateinPTBR(pet.birthdate)}</p>
-            <p><strong>Idade: </strong> ${pet.yearAge} anos e mês/meses</p>
+            <p><strong>Idade: </strong> ${pet.yearAge}</p>
             </div>
         
         `
@@ -146,6 +157,25 @@ function dateinPTBR(date) {
     let dateBR = date.split('-')
     dateBR.reverse()
     return dateBR.join('/')
+}
+
+function registerPet() {
+    document.getElementById("container-principal").classList.remove("hidden");
+    document.getElementById("container-list").classList.add("hidden");
+}
+
+function listALotOfPets() {
+    const tamanho = libraryPet.getAll().length;
+    console.log(tamanho);
+    
+    if (tamanho == 0) {
+        sendMsg("Não há usuários cadastrados","error");
+        return;}
+        else{
+            document.getElementById("container-principal").classList.add("hidden");
+            document.getElementById("container-list").classList.remove("hidden");
+        }
+  
 }
 
 

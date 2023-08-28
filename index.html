@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="assets/css/styles.registerpets.css">
 </head>
 <body>
+    <header>
+        <h1 id="title">Clínica Veterinária</h1>
+        <button id="button-CreatePet" class="button-header" onclick="listALotOfPets()">Exibição</button>
+        <button id="button-CreatePet" class="button-header" onclick="registerPet()">Cadastro</button>
+    </header>
     
     <div id="container-principal">
 
@@ -28,17 +33,22 @@
             <input type="date" id="input-birthdate" name="input-date" class="inputs">
 
             <div id="msg">
-                
+
             </div>
 
             <button id="button-CreatePet" class="button" onclick="createPet()">Cadastrar</button>
+            
 
         </div>
 
 
-        <div id="container-list">
 
-        </div>
+        
+    </div>
+
+    
+    <div id="container-list">
+          
     </div>
 </body>
 </html>
