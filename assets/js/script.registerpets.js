@@ -75,6 +75,20 @@ function verifyInputs(){
     }
 }
 
+function sendMsg(msg, typeMsg){
+    let msgDiv = document.getElementById("msg");
+    msgDiv.innerHTML= "";
+
+    let msgForScreen= `
+    <p class="${typeMsg}">${msg}`;
+
+    msgDiv.innerHTML = msgForScreen;
+
+    setTimeout(function(){
+        msgDiv.innerHTML= '';
+    },3000);
+
+}
 
 function isURLValida(url) {
     if(url.match(/\.(jpeg|jpg|gif|png)$/) != null){
