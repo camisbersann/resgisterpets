@@ -1,9 +1,9 @@
 class Pet{
-    constructor(tutor, petname, species, picture, birthdate){
+    constructor(tutor, petname, species, pictureLink, birthdate){
         this.tutor = tutor;
         this.petname = petname;
         this.species = species;
-        this.picture = picture;
+        this.picture = pictureLink;
         this.birthdate = birthdate;
     }
 }
@@ -24,16 +24,35 @@ function createPet(){
     let tutor = document.getElementById("input-tutor").value;
     let petname= document.getElementById("input-petname").value;
     let species = document.getElementById("input-species").value;
-    let picture = document.getElementById("input-picture").value;
+    let pictureLink = document.getElementById("input-picture").value;
     let birthdate = document.getElementById("input-birthdate").value;
 
-    const pet = new Pet(tutor, petname, species, picture, birthdate);
+    const pet = new Pet(tutor, petname, species, pictureLink, birthdate);
 
     console.log(pet);
 
     libraryPet.add(pet);
 
     showPet();
+}
 
+function showPet(){
+    const listHTML = document.getElementById("container-list");
+    listHTML.innerHTML = "";
 
+    let listArray = libraryPet.pets;
+
+    listArray.forEach(pet => {
+        const html = `
+            <div class="petdetail">
+            <img src= "${pet.pictureLink}" alt="${pet.petname}" 
+            <p><strong>Tutor: </strong> ${pet.tutor}</p>
+            <p><strong>Nome do Pet: </strong> ${pet.petname}</p>
+            <p><strong>Espécie: </strong> ${pet.species}</p>
+            <p><strong>Data de Nascimento: </strong> ${pet.birthdate}</p>
+            </div>
+        
+        `
+        listArray.innerHTML += html;
+    });
 }
